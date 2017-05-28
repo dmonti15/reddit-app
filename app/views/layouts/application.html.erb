@@ -9,6 +9,13 @@
   </head>
 
   <body>
+
+  <!-- adds alert class based on what type of word it is -->
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>
