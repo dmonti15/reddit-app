@@ -64,6 +64,18 @@ class LinksController < ApplicationController
     end
   end
 
+  def upvote
+    @link = Link.find(params[:id])
+    @link.upvote_by current_user # to assign that upvote to the current user
+    redirect_to :back # what back is going to do is put the upvote ad downvote method in the index showpage, will redirect the to the same page they are currently on
+  end
+
+  def downvote
+    @link = Link.find(params[:id])
+    @link.downvote_by current_user 
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
